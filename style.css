@@ -1,0 +1,15 @@
+h1 {
+  font-family: helvetica;
+}
+
+p {
+  color: lightgrey;
+}
+
+.second_paragraph {
+  background-color: #0000FF;
+}
+
+#unique_new_york {
+  border: 5px dashed #FF0000;
+}
