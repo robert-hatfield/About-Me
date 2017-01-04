@@ -28,64 +28,36 @@ if (answer1 === true) {
   // Not sure if serious.
   console.log('User guessed: ' + seriousGuess);
 
-// Checking all responses in an iterative loop is a lot cleaner
 // guessCheck contains user response, then if defined, then if correct
   var guessCheck = [[sleepGuess],
     [motorcycleGuess],
     [montyPythonGuess],
     [anglophileGuess]
     [seriousGuess]];
+// set the correct answers to these questions
   var correctAnswers = ['N','N','Y','Y','trick question'];
 
-  for (var i = 0; i < 5 ; 1) {
+// Checking all responses in an iterative loop is a lot cleaner
+  for (var i = 0; i < 5 ; i++) {
+    console.log(guessCheck[i]);
     // check if answer was defined
     if (guessCheck[i,0]) {
       console.log('Question ' + i + ' is answered.' );
       guessCheck[i,1] = true;
+      // then check if correct
+      if (guessCheck[i,0,0] === correctAnswers[i]) {
+        console.log('And is correct.');
+        guessCheck[i,2] = true;
+      } else {
+        console.log('But is incorrect.');
+        guessCheck[i,2] = false;
+      }
     } else {
       console.log('Question ' + i + ' was not answered.');
       guessCheck[i,1] = false;
     }
-    // then check if correct
-    if (guessCheck[i,0] === correctAnswers[i]) {
-      console.log('And is correct.');
-      guessCheck[i,2] = true;
-    } else {
-      console.log('But is incorrect.');
-      guessCheck[i,2] = false;
-    }
   }
 
-/*
-  // Check if user answered Yes, No, or something else.
-    console.log('User guessed: ' + sleepGuess + ', resolving as ' + sleepGuess[0].toUpperCase());
-    if (sleepGuess[0].toUpperCase() === 'Y') {
-      console.log('True');
-    } if (sleepGuess[0.toUpperCase() === 'N') {else {
-      console.log('False');
-    }
-  }
-*/
-
-  /*  + ', resolving as ' + motorcycleGuess[0].toUpperCase());
-  if (motorcycleGuess[0].toUpperCase() === 'Y') {
-    console.log('True');
-  } else {
-    console.log('False');
-  }
-  */
-
-  if (anglophileGuess[0].toUpperCase() === 'Y') {
-    console.log('True');
-  } else {
-    console.log('False');
-  }
-
-  if (seriousGuess[0].toUpperCase() === 'Y') {
-    console.log('True');
-  } else {
-    console.log('False');
-  }
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
