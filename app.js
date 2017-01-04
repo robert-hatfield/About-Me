@@ -66,3 +66,8 @@ if (answer1 === true) {
   // No quiz for you!
   console.log('User is NOT prepared.');
 }
+
+// this just drops in the whole guessCheck array for testing
+document.write('<p>' + guessCheck + '</p>');
+// drops in the user's first guess
+document.write('<p>Your first guess was: ' + guessCheck[0][0] + '.</p>');
