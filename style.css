@@ -1,12 +1,13 @@
-h1 {
+h1, h2, h3, h4 {
   font-family: helvetica;
 }
 
-p {
+* {
   color: lightgrey;
+  background-color: #4A525A;
 }
 
-.second_paragraph {
+.proj_desc * {
   background-color: #0000FF;
 }
 
