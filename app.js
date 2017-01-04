@@ -29,32 +29,36 @@ if (answer1 === true) {
   console.log('User guessed: ' + seriousGuess);
 
 // guessCheck contains user response, then if defined, then if correct
-  var guessCheck = [[sleepGuess],
-    [motorcycleGuess],
-    [montyPythonGuess],
-    [anglophileGuess]
-    [seriousGuess]];
+  var guessCheck = [[sleepGuess, false, false],
+    [motorcycleGuess, false, false],
+    [montyPythonGuess, false, false],
+    [anglophileGuess, false, false],
+    [seriousGuess, false, false]];
 // set the correct answers to these questions
   var correctAnswers = ['N','N','Y','Y','trick question'];
 
 // Checking all responses in an iterative loop is a lot cleaner
   for (var i = 0; i < 5 ; i++) {
+    var nowChecking = i + 1;
     console.log(guessCheck[i]);
     // check if answer was defined
-    if (guessCheck[i,0]) {
-      console.log('Question ' + i + ' is answered.' );
-      guessCheck[i,1] = true;
+    if (guessCheck[i][0]) {
+      console.log('Question ' + nowChecking + ' is answered.' );
+      guessCheck[i][1] = true;
       // then check if correct
-      if (guessCheck[i,0,0] === correctAnswers[i]) {
+      console.log('First character of guess is ' + guessCheck[i][0][0]);
+      if (guessCheck[i][0][0].toUpperCase() == correctAnswers[i]) {
         console.log('And is correct.');
-        guessCheck[i,2] = true;
+        guessCheck[i][2] = true;
+        console.log(guessCheck[i]);
       } else {
         console.log('But is incorrect.');
-        guessCheck[i,2] = false;
+        guessCheck[i][2] = false;
+        console.log(guessCheck[i]);
       }
     } else {
-      console.log('Question ' + i + ' was not answered.');
-      guessCheck[i,1] = false;
+      console.log('Question ' + nowChecking + ' was not answered.');
+      guessCheck[i][1] = false;
     }
   }
 
