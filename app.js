@@ -3,7 +3,7 @@
 // set values for questions and the correct answers
 var question = ['Question 1: Do you think Rob has had more than six hours of sleep in the past two days? \(Y\/N\)',
   'Question 2: Do you think Rob rides a motorcycle? \(Y\/N\)',
-  'Question 3: Do you agree that thou count to three, no more, no less? \(Y\/N\)',
+  'Question 3: Do you agree that shalt thou count to three, no more, no less? \(Y\/N\)',
   'Question 4: Do you think Rob also likes Red Dwarf and Doctor Who? \(Y\/N\)',
   'Question 5: Is Rob the sort of person to take himself seriously? \(Y\/N\)'];
 
