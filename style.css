@@ -8,9 +8,10 @@ h1, h2, h3, h4 {
 }
 
 .proj_desc * {
-  background-color: #0000FF;
+  color: #FFD39B;
 }
 
-#unique_new_york {
-  border: 5px dashed #FF0000;
+#v_imp_lesson {
+  color: #FF4040;
+  font-weight: bold;
 }
