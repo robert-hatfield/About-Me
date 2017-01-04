@@ -1,17 +1,4 @@
-h1, h2, h3, h4 {
-  font-family: helvetica;
-}
-
 * {
   color: lightgrey;
   background-color: #4A525A;
-}
-
-.proj_desc * {
-  color: #FFD39B;
-}
-
-#v_imp_lesson {
-  color: #FF4040;
-  font-weight: bold;
 }
