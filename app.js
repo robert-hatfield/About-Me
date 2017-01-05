@@ -1,49 +1,66 @@
 'use strict';
 
-// set values for questions and the correct answers
-var question = ['Question 1: Do you think Rob has had more than six hours of sleep in the past two days? \(Y\/N\)',
-  'Question 2: Do you think Rob rides a motorcycle? \(Y\/N\)',
-  'Question 3: Do you agree that shalt thou count to three, no more, no less? \(Y\/N\)',
-  'Question 4: Do you think Rob also likes Red Dwarf and Doctor Who? \(Y\/N\)',
-  'Question 5: Is Rob the sort of person to take himself seriously? \(Y\/N\)'];
-
-var correctAnswers = ['N','N','Y','Y','trick question'];
+// create objects to contain question and response data
+var q1 = {
+  questionNth: '1st ',
+  question: 'Do you think I had more than six hours of sleep in the past two days while building this quiz? \(Y\/N\)',
+  correctAnswer: 'N',
+  userResponse: '',
+  nullCheck: false,
+  correctCheck: false,
+  feedback: 'I didn\'t. But isn\'t that what weekends are for?'
+};
+var q2 = {
+  questionNth: '2nd ',
+  question: 'Do you think that I ride a motorcycle? \(Y\/N\)',
+  correctAnswer: 'N',
+  userResponse: '',
+  nullCheck: false,
+  correctCheck: false,
+  feedback: 'unfortunately I don\'t. I came close, but just before going to a class to get my motorcycle endorsement, had to totally replace my car.'
+};
+var q3 = {
+  questionNth: '3rd ',
+  question: 'Do you agree that shalt thou count to three, no more, no less? \(Y\/N\)',
+  correctAnswer: 'Y',
+  userResponse: '',
+  nullCheck: false,
+  correctCheck: false,
+  feedback: 'three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out.'
+};
+var q4 = {
+  questionNth: '4th ',
+  question: 'Do you think Rob likes programmes such as Doctor Who, The IT Crowd, and Red Dwarf? \(Y\/N\)',
+  correctAnswer: 'Y',
+  userResponse: '',
+  nullCheck: false,
+  correctCheck: false,
+  feedback: '! In fact, I could be showing several early warning symptoms of becoming an Anglophile. Ask my doctor if cancelling BBC America is right for me.'
+};
+var q5 = {
+  questionNth: '5th ',
+  question: 'Is Rob the sort of person to take himself seriously? \(Y\/N\)',
+  correctAnswer: 'trick',
+  userResponse: '',
+  nullCheck: false,
+  correctCheck: false,
+  feedback: 'this is a trick question, which doesn\'t really have a yes or no answer. While I am guilty at times of taking things more seriously than strictly needed, I\'m also quite capable of choosing to make a complete fool of myself.'
+};
 
 // Check if user is ready.
-var answer1 = confirm('You\'re about to to make some guesses about Rob Hatfield. Are you ready?');
+var readyCheck = confirm('You\'re about to to make some guesses about Robert. Are you ready?');
 
 // Log user response for readiness. No quiz if user clicks 'Cancel'.
 if (answer1 === true) {
   console.log('User has confirmed readiness.');
   alert('There are 5 Yes or No questions, so please answer accordingly.');
 
+// previous guess code example
+/*
   var sleepGuess = prompt(question[0]);
   // Because he sure hasn't.
   console.log('User guessed: ' + sleepGuess);
-
-  var motorcycleGuess = prompt(question[1]);
-  // I was *this* close!
-  console.log('User guessed: ' + motorcycleGuess);
-
-  var montyPythonGuess = prompt(question[2]);
-  // Five is right out.
-  console.log('User guessed: ' + montyPythonGuess);
-
-  var anglophileGuess = prompt(question[3]);
-  // Warning: possible Anglophile detected.
-  console.log('User guessed: ' + anglophileGuess);
-
-  var seriousGuess = prompt(question[4]);
-  // Not sure if serious.
-  console.log('User guessed: ' + seriousGuess);
-
-// guessCheck contains user response, then if defined, then if correct
-  var guessCheck = [[sleepGuess, false, false, '1st', 'he hasn\'t. Maybe last night was better.'],
-    [motorcycleGuess, false, false, '2nd', 'he doesn\'t. He came close, but just before getting his motorcycle endorsement, had to replace his car.'],
-    [montyPythonGuess, false, false, '3rd', 'three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out.'],
-    [anglophileGuess, false, false, '4th', 'Rob could be showing several early warning symptoms of becoming an Anglophile. Ask his doctor if cancelling BBC America is right for him.'],
-    [seriousGuess, false, false, '5th', 'this is a trick question. Sometimes he might just really need to lighten up, or he could be going a little bit loopy.']];
-// set the correct answers to these questions
+*/
 
 // Checking all responses in an iterative loop is a lot cleaner
   for (var i = 0; i < 5 ; i++) {
