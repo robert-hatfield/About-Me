@@ -26,7 +26,7 @@ var q3 = {
   feedback: 'Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out.'
 };
 var q4 = {
-  question: 'Question 4: Do you think Rob likes programmes such as Doctor Who, The IT Crowd, and Red Dwarf? \(Y\/N\)',
+  question: 'Question 4: Do you think I like programmes such as Doctor Who, The IT Crowd, and Red Dwarf? \(Y\/N\)',
   correctAnswer: 'Y',
   userResponse: '',
   nullCheck: false,
@@ -34,7 +34,7 @@ var q4 = {
   feedback: 'In fact, I could be showing several early warning symptoms of becoming an Anglophile. Ask my doctor if cancelling BBC America is right for me.'
 };
 var q5 = {
-  question: 'Question 5: Is Rob the sort of person to take himself seriously? \(Y\/N\)',
+  question: 'Question 5: Am I the sort of person to take himself seriously? \(Y\/N\)',
   correctAnswer: 'trick',
   userResponse: '',
   nullCheck: false,
@@ -51,7 +51,16 @@ var readyCheck = confirm('You\'re about to to make some guesses about Robert. Ar
 // Log user response for readiness. No quiz if user clicks 'Cancel'.
 if (readyCheck === true) {
   console.log('User has confirmed readiness.');
-  alert('There are 5 Yes or No questions, so please answer accordingly.');
+  var visitorName = (prompt('What is your name, please?'));
+  if (visitorName) {
+    var greeting = 'Great! Thanks, ' + visitorName + '. \n';
+    console.log('User provided name of "' + visitorName + '".');
+  } else {
+    var greeting = 'Okay, you can remain anonymous if you like.';
+    visitorName = 'Anonymous';
+    console.log('No name provided, set to "' + visitorName + '".');
+  }
+  alert(greeting + 'The following five questions should be answered (Y)es or (N)o.');
 
 // Check Yes/No questions in a for loop
   for (var i = 0; i < 5 ; i++) {
@@ -64,7 +73,7 @@ if (readyCheck === true) {
       document.write('You answered: ' + quizBoolean[i].userResponse + '<br />');
       quizBoolean[i].nullCheck = true;
       // Then check if correct
-      console.log('First character of guess is ' + quizBoolean[i].userResponse[0]);
+      console.log('First character of guess is "' + quizBoolean[i].userResponse[0] + '"...');
       if (quizBoolean[i].userResponse[0].toUpperCase() == quizBoolean[i].correctAnswer) {
         console.log('And is correct.');
         document.write('That\'s right!<br />' + quizBoolean[i].feedback + '</p>');
@@ -77,6 +86,40 @@ if (readyCheck === true) {
       document.write('You didn\'t bother to answer this one!<br />' + quizBoolean[i].feedback + '</p>');
     }
   }
+
+  alert('Okay, ' + visitorName + '. Now I\'d like you to guess a number between 1 and 10.\n \n You\'ll get FOUR chances to guess.');
+  var targetNumber = Math.floor(Math.random() * 10) + 1;
+  console.log('Computer picked: ' + targetNumber);
+  var targetGuesses = [];
+  for (i = 0; i < 4; i++) {
+    targetGuesses[i] = parseInt(prompt('Guess ' + i + 'of 4:\nWhat number did I pick? (Between 1 and 10.)'));
+    if (targetGuesses[i]) {
+      if (targetGuesses[i] === targetNumber) {
+        switch(i) {
+        case 0:
+          var response = 'Wow, first guess!';
+          console.log(response);
+          break;
+        case 1:
+          var response = 'Nicely done, ' + visitorName + '!';
+          console.log(response);
+          break;
+        default:
+          var response = 'You got it!';
+          console.log(response);
+          console.log(targetGuesses);
+        }
+        break;
+      } else {
+        console.log('Wrong, try again.');
+        console.log(targetGuesses);
+      }
+    } else {
+      console.log('No response.');
+      console.log(targetGuesses);
+    }
+  }
+
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
