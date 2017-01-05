@@ -53,10 +53,10 @@ if (readyCheck === true) {
   console.log('User has confirmed readiness.');
   var visitorName = (prompt('What is your name, please?'));
   if (visitorName) {
-    var greeting = 'Great! Thanks, ' + visitorName + '. \n';
+    var greeting = 'Great! Thanks, ' + visitorName + '.\n';
     console.log('User provided name of "' + visitorName + '".');
   } else {
-    var greeting = 'Okay, you can remain anonymous if you like.';
+    var greeting = 'Okay, you can remain anonymous if you like.\n';
     visitorName = 'Anonymous';
     console.log('No name provided, set to "' + visitorName + '".');
   }
@@ -76,13 +76,16 @@ if (readyCheck === true) {
       console.log('First character of guess is "' + quizBoolean[i].userResponse[0] + '"...');
       if (quizBoolean[i].userResponse[0].toUpperCase() == quizBoolean[i].correctAnswer) {
         console.log('And is correct.');
+        alert('That\'s right!\n' + quizBoolean[i].feedback);
         document.write('That\'s right!<br />' + quizBoolean[i].feedback + '</p>');
       } else {
         console.log('But is incorrect.');
+        alert('I\'m afraid that\'s wrong.\n' + quizBoolean[i].feedback);
         document.write('But unfortunately, that\'s wrong.<br />' + quizBoolean[i].feedback + '</p>');
       }
     } else {
       console.log('Question ' + (i + 1) + ' was not answered.');
+      alert('You didn\'t bother to answer this one!\n' + quizBoolean[i].feedback);
       document.write('You didn\'t bother to answer this one!<br />' + quizBoolean[i].feedback + '</p>');
     }
   }
