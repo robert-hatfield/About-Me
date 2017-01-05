@@ -1,4 +1,5 @@
 'use strict';
 
 // can I get a js to load the next page?
-document.getElementById('trick').addEventListener('click',window.open('https://www.google.com/'),'_self');
+var myWindow = 0;
+document.getElementById('trick').addEventListener('click', myWindow = window.open('https://www.google.com/'),'_self');
