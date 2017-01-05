@@ -114,15 +114,17 @@ if (readyCheck === true) {
         console.log('Wrong, try again.');
         console.log(targetGuesses);
         if (targetGuesses[i] > targetNumber) {
-          alert(targetGuesses[i] + 'is too high. Try again.');
+          alert(targetGuesses[i] + ' is too high. Try again.');
         } else {
-          alert(targetGuesses[i] + 'is too low. Try again.');
+          alert(targetGuesses[i] + ' is too low. Try again.');
         }
       }
     } else {
       console.log('No response.');
       if (i < 3) {
         alert('No guess at all? Try again.');
+      } else {
+        alert('Well, that was your last chance and didn\'t even try. Ah well. \n The number I chose was ' + targetNumber + '.');
       }
     }
   }
