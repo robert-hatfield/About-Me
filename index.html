@@ -1,37 +1,66 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Class 2 Demo - Jan 3 2017</title>
+    <title>Robert Hatfield: About Me</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
   <body>
     <main>
-        <h1>About Me</h1>
-        <p>Hi, I'm Robert Hatfield, and I'm a developer learning at Code Fellows in Seattle, WA.</p>
-
-        <section class="proj_desc">
-          <h4>This project's objective:</h4>
-          <p class="proj_desc">Demonstrate the integration of three core web technologies:</p>
-          <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-          </ul>
-
-          <h4>Lessons learned:</h4>
-          <ul>
-            <li>The linter won't catch everything.</li>
-              <ul>
-                <li>Which means you won't see the comma missing in your two-dimensional array.</li>
-                <li>Or stop you from creating an infinite loop.</li>
-              </ul>
-            <li>It took me entirely too long to get my FOR loop working. Don't be like me:<br /><em id="v_imp_lesson">Follow the 15 minute rule!</em></li>
-          </ul>
+        <section id="intro">
+          <h1>About Me</h1>
+          <p><img id="photo" ALIGN="left" />Hi, I'm Robert Hatfield, and I'm a developer studying at Code Fellows in Seattle, WA.</p>
         </section>
 
-        <h4>Let's see how you did with the quiz:</h4>
+        <section id="ed_summary">
+          <h3>Education Summary</h3>
+          <ul class="list1">
+            <li>Formal Education</li>
+              <ul class="list2">
+                <li>Code Fellows, Seattle WA - <em>currently studying</em></li>
+                <li>The Art Institute of Seattle - <em>studied, 1995</em></li>
+                <li>White River High School, Buckley WA - <em>graduated w/ 3.3 GPA, 1994</em></li>
+              </ul>
+            <li class="list1">Other Education</li>
+              <ul class="list2">
+                <li>Getting Things Done - <em>Mastering Workflow Level 1: Fundamentals, 2016</em></li>
+                <li>InsurePass - <em>Washington State Pre-License Education for Life &amp; Disability, 1998</em></li>
+              </ul>
+          </ul>
+        </section>
+        <section id="work_summary">
+          <h3>Employment History:</h3>
+          <ul class="list1">
+            <li>Comcast Cable - <em>March 2000 - December 2016</em>
+              <ul class="list2">
+                <li>Reviewed and staged hardware &amp; software maintenance events for Comcast's production environments in nine regions from Minnesota to the West Coast. </li>
+                <li>Coordinated fix agent responses to outage &amp; impairment events for Comcast's Hybrid Fiber/Coax network in Washington State.</li>
+                <li>Provided technical and operational support to external customers, contracted resources, and in-house technicians &amp; engineers.
+                </li>
+              </ul>
+            </li>
+            <li>Modern Woodmen of America - <em>January - December 1999</em></li>
+          </ul>
+        </section>
+        <section id="interests">
+          <h3>My Top 10 Sci-Fi &amp; Fantasy Series/Franchises:</h3>
+          <ol class="list1">
+            <li>Star Trek</li>
+            <li>Star Wars</li>
+            <li>Stargate<span id="i_like_stars"> What? I happen to like the stars.</span></li>
+            <li>The Wheel of Time (book series), by Robert Jordan &amp; Brandon Sanderson</li>
+            <li>Old Man's War (book series), by John Scalzi</li>
+            <li>The Hitchhiker's Guide to the Galaxy (book series), by Douglas Adams</li>
+            <li>The Marvel Cinematic Universe (a.k.a. MCU)</li>
+            <li>The Expanse (TV & book series), by James S. A. Corey)</li>
+            <li>Robots (book series), by Isaac Asimov</li>
+            <li>Gentlemen Bastards (book series), by Scott Lynch</li>
+          </ol>
+        </section>
+        <section id="quiz">
+          <h3>This is a silly quiz.</h3>
+          <script src="app.js"></script>
+        </section>
     </main>
-    <script src="app.js"></script>
   </body>
 </html>

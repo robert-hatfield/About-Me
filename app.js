@@ -1,81 +1,168 @@
 'use strict';
 
-// set values for questions and the correct answers
-var question = ['Question 1: Do you think Rob has had more than six hours of sleep in the past two days? \(Y\/N\)',
-  'Question 2: Do you think Rob rides a motorcycle? \(Y\/N\)',
-  'Question 3: Do you agree that shalt thou count to three, no more, no less? \(Y\/N\)',
-  'Question 4: Do you think Rob also likes Red Dwarf and Doctor Who? \(Y\/N\)',
-  'Question 5: Is Rob the sort of person to take himself seriously? \(Y\/N\)'];
-
-var correctAnswers = ['N','N','Y','Y','trick question'];
+/* TO DO:
+  Insert a link into index.html if user is ready for the quiz
+*/
 
 // Check if user is ready.
-var answer1 = confirm('You\'re about to to make some guesses about Rob Hatfield. Are you ready?');
+var readyCheck = confirm('You\'re about to to make some guesses about Robert. Are you ready?');
 
 // Log user response for readiness. No quiz if user clicks 'Cancel'.
-if (answer1 === true) {
+if (readyCheck === true) {
   console.log('User has confirmed readiness.');
-  alert('There are 5 Yes or No questions, so please answer accordingly.');
-
-  var sleepGuess = prompt(question[0]);
-  // Because he sure hasn't.
-  console.log('User guessed: ' + sleepGuess);
-
-  var motorcycleGuess = prompt(question[1]);
-  // I was *this* close!
-  console.log('User guessed: ' + motorcycleGuess);
-
-  var montyPythonGuess = prompt(question[2]);
-  // Five is right out.
-  console.log('User guessed: ' + montyPythonGuess);
-
-  var anglophileGuess = prompt(question[3]);
-  // Warning: possible Anglophile detected.
-  console.log('User guessed: ' + anglophileGuess);
-
-  var seriousGuess = prompt(question[4]);
-  // Not sure if serious.
-  console.log('User guessed: ' + seriousGuess);
-
-// guessCheck contains user response, then if defined, then if correct
-  var guessCheck = [[sleepGuess, false, false, '1st', 'he hasn\'t. Maybe last night was better.'],
-    [motorcycleGuess, false, false, '2nd', 'he doesn\'t. He came close, but just before getting his motorcycle endorsement, had to replace his car.'],
-    [montyPythonGuess, false, false, '3rd', 'three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out.'],
-    [anglophileGuess, false, false, '4th', 'Rob could be showing several early warning symptoms of becoming an Anglophile. Ask his doctor if cancelling BBC America is right for him.'],
-    [seriousGuess, false, false, '5th', 'this is a trick question. Sometimes he might just really need to lighten up, or he could be going a little bit loopy.']];
-// set the correct answers to these questions
-
-// Checking all responses in an iterative loop is a lot cleaner
+  // Track number of questions answered correctly within allowed attempts.
+  var userScore = 0;
+  // create objects to contain question and response data
+  var q1 = {
+    question: 'Question 1: Do you think I got more than six hours of sleep in the past two days while building this quiz? \(Y\/N\)',
+    correctAnswer: 'N',
+    userResponse: '',
+    nullCheck: false,
+    correctCheck: false,
+    feedback: 'I didn\'t. But isn\'t that what weekends are for?'
+  };
+  var q2 = {
+    question: 'Question 2: Do you think that I ride a motorcycle? \(Y\/N\)',
+    correctAnswer: 'N',
+    userResponse: '',
+    nullCheck: false,
+    correctCheck: false,
+    feedback: 'Unfortunately I don\'t. I came close, a few years ago, but just before attending a course to get my motorcycle endorsement, had to totally replace my car.'
+  };
+  var q3 = {
+    question: 'Question 3: Do you agree that shalt thou count to three, no more, no less? \(Y\/N\)',
+    correctAnswer: 'Y',
+    userResponse: '',
+    nullCheck: false,
+    correctCheck: false,
+    feedback: 'Three shall be the number thou shalt count, and the number of the counting shall be three. Four shalt thou not count, neither count thou two, excepting that thou then proceed to three. Five is right out.'
+  };
+  var q4 = {
+    question: 'Question 4: Do you think I like programmes such as Doctor Who, The IT Crowd, and Red Dwarf? \(Y\/N\)',
+    correctAnswer: 'Y',
+    userResponse: '',
+    nullCheck: false,
+    correctCheck: false,
+    feedback: 'In fact, I could be showing several early warning symptoms of becoming an Anglophile. Ask my doctor if cancelling BBC America is right for me.'
+  };
+  var q5 = {
+    question: 'Question 5: Am I the sort of person to take myself seriously? \(Y\/N\)',
+    correctAnswer: 'trick',
+    userResponse: '',
+    nullCheck: false,
+    correctCheck: false,
+    feedback: 'Gotcha! This is a trick question, one which doesn\'t really have a yes or no answer. While I am guilty at times of taking things more seriously than necessary, I\'m also quite capable of choosing to make a complete fool of myself.'
+  };
+  // store all Y/N questions in an array
+  var quizBoolean = [q1, q2, q3, q4, q5];
+  // ask vistor for their name
+  var visitorName = (prompt('What is your name, please?'));
+  if (visitorName) {
+    var greeting = 'Great! Thanks, ' + visitorName + '.\n';
+    console.log('User provided name of "' + visitorName + '".');
+  } else {
+    var greeting = 'Okay, you can remain anonymous if you like.\n';
+    visitorName = 'Anonymous';
+    console.log('No name provided, set to "' + visitorName + '".');
+  }
+// Ask 5 Yes/No questions and check responses
+  alert(greeting + 'The following five questions should be answered (Y)es or (N)o.');
   for (var i = 0; i < 5 ; i++) {
-    var nowChecking = i + 1;
-    console.log(guessCheck[i]);
-    document.write('<p>The ' + guessCheck[i][3] + ' question was:<br />'
-    + question[i] + '</p>');
-    // check if answer was defined
-    if (guessCheck[i][0]) {
-      console.log('Question ' + nowChecking + ' is answered.' );
-      document.write('<p>Your ' + guessCheck[i][3] + ' guess was:<br />'
-      + guessCheck[i][0] + '</p>');
-      guessCheck[i][1] = true;
-      // then check if correct
-      console.log('First character of guess is ' + guessCheck[i][0][0]);
-      if (guessCheck[i][0][0].toUpperCase() == correctAnswers[i]) {
+    quizBoolean[i].userResponse = prompt(quizBoolean[i].question);
+    console.log(quizBoolean[i].userResponse);
+    document.write('<p>' + quizBoolean[i].question + '<br />');
+    // Check if answer was defined
+    if (quizBoolean[i].userResponse) {
+      console.log('Question ' + (i + 1) + ' was answered.' );
+      document.write('You answered: ' + quizBoolean[i].userResponse + '<br />');
+      quizBoolean[i].nullCheck = true;
+      // Then check if correct
+      console.log('First character of guess is "' + quizBoolean[i].userResponse[0] + '"...');
+      if (quizBoolean[i].userResponse[0].toUpperCase() == quizBoolean[i].correctAnswer) {
         console.log('And is correct.');
-        document.write('<p>Nicely done!<br />'
-        + 'In fact, ' + guessCheck[i][4] + '</p>');
-        guessCheck[i][2] = true;
-        console.log(guessCheck[i]);
+        alert('That\'s right!\n\n' + quizBoolean[i].feedback);
+        document.write('That\'s right!<br />' + quizBoolean[i].feedback + '</p>');
       } else {
         console.log('But is incorrect.');
-        document.write('<p>Sorry, that\'s wrong.<br />'
-        + 'Actually, ' + guessCheck[i][4] + '</p>');
-        guessCheck[i][2] = false;
-        console.log(guessCheck[i]);
+        alert('I\'m afraid that\'s wrong.\n\n' + quizBoolean[i].feedback);
+        document.write('But unfortunately, that\'s wrong.<br />' + quizBoolean[i].feedback + '</p>');
       }
     } else {
-      console.log('Question ' + nowChecking + ' was not answered.');
-      document.write('<p>But you didn\'t bother to answer it!</p>');
-      guessCheck[i][1] = false;
+      console.log('Question ' + (i + 1) + ' was not answered.');
+      alert('You didn\'t bother to answer this one!\n\n' + quizBoolean[i].feedback);
+      document.write('You didn\'t bother to answer this one!<br />' + quizBoolean[i].feedback + '</p>');
+    }
+  }
+// Random number guessing game
+  alert('Okay, ' + visitorName + '. Now I\'d like you to guess a number between 1 and 10.\n\nYou\'ll get FOUR chances to guess.');
+  var targetNumber = Math.floor(Math.random() * 10) + 1;
+  console.log('Computer picked: ' + targetNumber);
+  var targetGuesses = [];
+// Check user guesses against number chosen up to 4 times
+  for (i = 0; i < 4; i++) {
+    // ask user for a number
+    targetGuesses[i] = parseInt(prompt('Guess ' + (i + 1) + ' of 4:\nWhat number did I pick? (Between 1 and 10.)'));
+    console.log(targetGuesses[i]);
+    // confirm that user provided a response
+    if (targetGuesses[i]) {
+      /* check if user provided a valid number and is correct
+      if it is correct, give user varied feedback and end number game*/
+      if (targetGuesses[i] === targetNumber) {
+        switch(i) {
+        case 0:
+          var numberResponse = 'Wow, first guess! I\'m impressed.';
+          alert(numberResponse);
+          break;
+        case 1:
+          var numberResponse = 'Nicely done, ' + visitorName + '! ' + targetGuesses[i] + ' is correct.';
+          alert(numberResponse);
+          break;
+        default:
+          var numberResponse = 'You got it! ' + targetGuesses[i] + ' is correct.';
+          alert(numberResponse);
+        }
+        break;
+      } else {
+        // if guess was incorrect or not a number
+        console.log('Wrong, try again.');
+        console.log(targetGuesses);
+        // if incorrect guess was a number, provide feedback
+        if (i < 3) {
+          var retryYN = ' Try again.';
+        } else {
+          var retryYN = ' Unfortunately, that was your last try.\n\nThe number I chose was ' + targetNumber + '.';
+        }
+        if (targetGuesses[i] > targetNumber) {
+          alert(targetGuesses[i] + ' is too high.' + retryYN);
+        } else {
+          alert(targetGuesses[i] + ' is too low.' + retryYN);
+        }
+      }
+    } else {
+      // if user provided no response
+      console.log('No response.');
+      // tell user they get another chance
+      if (i < 3) {
+        alert('No guess at all? Try again.');
+      } else {
+        // no guess
+        alert('Well, that was your last chance and didn\'t even try. Ah well.\nThe number I chose was ' + targetNumber + '.');
+      }
+    }
+  }
+
+  // 2-Dimensional array contains cities and states I have lived in
+  var citiesLived = [['Tacoma', ', WA'], ['Auburn', ', WA'], ['Seattle', ', WA'], ['Buckley', ', WA'], ['Beaverton', ', OR']];
+  var cityGuesses = [];
+  for (i = 0; i < 1; i++) {
+    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in. \nHint: one of them may not be in the state of Washington.');
+    console.log(cityGuesses[i].toUpperCase());
+    console.log(citiesLived[0][0].toUpperCase());
+    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
+      console.log('User guessed ' + cityGuesses[i] + ' correctly.');
+      for (j = 0; j < (i - 1)
+      alert('That\'s right - ')
+      break;
     }
   }
 
