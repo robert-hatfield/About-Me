@@ -1,5 +1,9 @@
 'use strict';
 
+/* TO DO:
+  Insert a link into index.html if user is ready for the quiz
+*/
+
 // Check if user is ready.
 var readyCheck = confirm('You\'re about to to make some guesses about Robert. Are you ready?');
 
@@ -154,10 +158,12 @@ if (readyCheck === true) {
     cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in. \nHint: one of them may not be in the state of Washington.');
     console.log(cityGuesses[i].toUpperCase());
     console.log(citiesLived[0][0].toUpperCase());
-    // if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
-    //   console.log('User guessed ' + cityGuess[i] + ' correctly.');
-    //   break;
-    // }
+    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
+      console.log('User guessed ' + cityGuesses[i] + ' correctly.');
+      for (j = 0; j < (i - 1)
+      alert('That\'s right - ')
+      break;
+    }
   }
 
 } else {
