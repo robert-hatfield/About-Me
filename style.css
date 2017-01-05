@@ -9,6 +9,11 @@ h1, h3 {
   font-family: Verdana, sans-serif;
 }
 
+h3:not(h3.quiz) {
+  border-style: ridge;
+  border-width: 3px;
+  border-color: lightgrey;
+}
 
 ul.list1{
     margin-left: 30px;
@@ -33,7 +38,8 @@ ol.list1{
   /* my thanks to users Benjamin and arielnmz at StackOverflow! - http://stackoverflow.com/a/25267892 & http://stackoverflow.com/a/25267928 */
 
 #ed_summary {
-  margin-left: 206px;
+  margin-left: 246px;
+  margin-right: 5%;
 }
 
 #ed_summary ul li {
@@ -56,4 +62,21 @@ ol.list1{
   font-style: italic;
   font-size: 0.6em;
   vertical-align: sub;
+}
+
+#quiz {
+  margin-top: 44px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#quiz h3{
+  background-color: lightgrey;
+  color: #4A525A;
+  width: 250px;
+  margin: 0 auto;
+  padding: 5px 0px;
+  border-width: thick;
+  border-style: outset;
+  border-color: #53868B;
 }
