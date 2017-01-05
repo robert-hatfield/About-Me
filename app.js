@@ -92,31 +92,38 @@ if (readyCheck === true) {
   console.log('Computer picked: ' + targetNumber);
   var targetGuesses = [];
   for (i = 0; i < 4; i++) {
-    targetGuesses[i] = parseInt(prompt('Guess ' + i + 'of 4:\nWhat number did I pick? (Between 1 and 10.)'));
+    targetGuesses[i] = parseInt(prompt('Guess ' + (i + 1) + ' of 4:\nWhat number did I pick? (Between 1 and 10.)'));
+    console.log(targetGuesses[i]);
     if (targetGuesses[i]) {
       if (targetGuesses[i] === targetNumber) {
         switch(i) {
         case 0:
-          var response = 'Wow, first guess!';
-          console.log(response);
+          var response = 'Wow, first guess! I\'m impressed.';
+          alert(response);
           break;
         case 1:
-          var response = 'Nicely done, ' + visitorName + '!';
-          console.log(response);
+          var response = 'Nicely done, ' + visitorName + '! ' + targetGuesses[i] + ' is correct.';
+          alert(response);
           break;
         default:
-          var response = 'You got it!';
-          console.log(response);
-          console.log(targetGuesses);
+          var response = 'You got it! ' + targetGuesses[i] + ' is correct.';
+          alert(response);
         }
         break;
       } else {
         console.log('Wrong, try again.');
         console.log(targetGuesses);
+        if (targetGuesses[i] > targetNumber) {
+          alert(targetGuesses[i] + 'is too high. Try again.');
+        } else {
+          alert(targetGuesses[i] + 'is too low. Try again.');
+        }
       }
     } else {
       console.log('No response.');
-      console.log(targetGuesses);
+      if (i < 3) {
+        alert('No guess at all? Try again.');
+      }
     }
   }
 
