@@ -160,12 +160,12 @@ if (readyCheck === true) {
     console.log(citiesLived[0][0].toUpperCase());
     if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
       console.log('User guessed ' + cityGuesses[i] + ' correctly.');
-      for (j = 0; j < (i - 1)
-      alert('That\'s right - ')
-      break;
+      for (var j = 0; j < (j - 1) ; j++) {
+        alert('That\'s right - I.');
+        break;
+      }
     }
   }
-
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
