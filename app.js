@@ -149,20 +149,27 @@ if (readyCheck === true) {
   }
 
   // 2-Dimensional array contains cities and states I have lived in
-  var citiesLived = [['Tacoma', ', WA'], ['Auburn', ', WA'], ['Seattle', ', WA'], ['Buckley', ', WA'], ['Beaverton', ', OR']];
+  var citiesLived = [['Tacoma', ', WA, '], ['Auburn', ', WA, '], ['Seattle', ', WA, '], ['Buckley', ', WA, and '], ['Beaverton', ', OR']];
   var cityGuesses = [];
-  for (i = 0; i < 1; i++) {
-    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in. \nHint: one of them may not be in the state of Washington.');
+  //Create a string containing all citiesLived
+  var cityList = '';
+  for (var i = 0; i < citiesLived.length; i++) {
+    cityList += citiesLived[i][0] + citiesLived[i][1];
+  }
+  //todo: set i < 6 once this is working = done
+  for (i = 0; i < 6; i++) {
+    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\n You have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
     console.log(cityGuesses[i].toUpperCase());
-    console.log(citiesLived[0][0].toUpperCase());
-    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
+    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
       console.log('User guessed ' + cityGuesses[i] + ' correctly.');
-      for (var j = 0; j < (j - 1) ; j++) {
-        alert('That\'s right - I.');
-        break;
-      }
+      alert('That\'s right!');
+      break;
+    } else {
+      console.log('Wrong guess');
+      alert('That is incorrect.');
     }
   }
+  alert('I have lived in: ' + cityList + '.');
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
