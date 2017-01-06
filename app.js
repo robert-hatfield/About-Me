@@ -160,7 +160,7 @@ if (readyCheck === true) {
   for (i = 0; i < 6; i++) {
     cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\n You have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
     console.log(cityGuesses[i].toUpperCase());
-    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
+    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
       console.log('User guessed ' + cityGuesses[i] + ' correctly.');
       alert('That\'s right!');
       break;
@@ -169,6 +169,7 @@ if (readyCheck === true) {
       alert('That is incorrect.');
     }
   }
+  alert('I have lived in: ' + cityList + '.');
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
