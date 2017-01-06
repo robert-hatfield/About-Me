@@ -110,16 +110,13 @@ if (readyCheck === true) {
       if (targetGuesses[i] === targetNumber) {
         switch(i) {
         case 0:
-          var numberResponse = 'Wow, first guess! I\'m impressed.';
-          alert(numberResponse);
+          alert('Wow, first guess! I\'m impressed.');
           break;
         case 1:
-          var numberResponse = 'Nicely done, ' + visitorName + '! ' + targetGuesses[i] + ' is correct.';
-          alert(numberResponse);
+          alert('Nicely done, ' + visitorName + '! ' + targetGuesses[i] + ' is correct.');
           break;
         default:
-          var numberResponse = 'You got it! ' + targetGuesses[i] + ' is correct.';
-          alert(numberResponse);
+          alert('You got it! ' + targetGuesses[i] + ' is correct.');
         }
         break;
       } else {
