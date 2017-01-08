@@ -19,6 +19,7 @@ if (readyCheck === true) {
   // Question 7
   quizCityGuess();
   alert('That\'s all the questions I have, ' + userName + '.\nYou scored a total of ' + userScore + ' out of a possible 7.\n\nBut since one of those was a trick question, I\'ll give you that point back.\nYour revised score is ' + (userScore + 1) + ' out of 7.\n\nThanks for playing!');
+  document.write('<p>' + userName + ' scored a total of ' + (userScore + 1) + ' out of 7 on the quiz.</p>');
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
