@@ -80,6 +80,7 @@ if (readyCheck === true) {
       console.log('First character of guess is "' + quizBoolean[i].userResponse[0] + '"...');
       if (quizBoolean[i].userResponse[0].toUpperCase() == quizBoolean[i].correctAnswer) {
         console.log('And is correct.');
+        userScore ++;
         alert('That\'s right!\n\n' + quizBoolean[i].feedback);
         document.write('That\'s right!<br />' + quizBoolean[i].feedback + '</p>');
       } else {
@@ -108,16 +109,14 @@ if (readyCheck === true) {
       /* check if user provided a valid number and is correct
       if it is correct, give user varied feedback and end number game*/
       if (targetGuesses[i] === targetNumber) {
-        switch(i) {
-        case 0:
+        if (i == 0) {
           alert('Wow, first guess! I\'m impressed.');
-          break;
-        case 1:
+        } else if (i == 1) {
           alert('Nicely done, ' + visitorName + '! ' + targetGuesses[i] + ' is correct.');
-          break;
-        default:
+        } else {
           alert('You got it! ' + targetGuesses[i] + ' is correct.');
         }
+        userScore ++;
         break;
       } else {
         // if guess was incorrect or not a number
@@ -148,6 +147,7 @@ if (readyCheck === true) {
     }
   }
 
+  // Question 7
   // 2-Dimensional array contains cities and states I have lived in
   var citiesLived = [['Tacoma', ', WA, '], ['Auburn', ', WA, '], ['Seattle', ', WA, '], ['Buckley', ', WA, and '], ['Beaverton', ', OR']];
   var cityGuesses = [];
@@ -156,13 +156,14 @@ if (readyCheck === true) {
   for (var i = 0; i < citiesLived.length; i++) {
     cityList += citiesLived[i][0] + citiesLived[i][1];
   }
-  //todo: set i < 6 once this is working = done
+  // Give user 6 chances to guess
   for (i = 0; i < 6; i++) {
-    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\n You have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
+    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\nYou have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
     console.log(cityGuesses[i].toUpperCase());
     if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
       console.log('User guessed ' + cityGuesses[i] + ' correctly.');
       alert('That\'s right!');
+      userScore ++;
       break;
     } else {
       console.log('Wrong guess');
@@ -170,6 +171,7 @@ if (readyCheck === true) {
     }
   }
   alert('I have lived in: ' + cityList + '.');
+  alert('That\'s all the questions I have, ' + visitorName + '.\nYou scored a total of ' + userScore + ' out of a possible 7.\n\nBut since one of those was a trick question, I\'ll give you that point back.\nYour revised score is ' + (userScore + 1) + ' out of 7.\n\nThanks for playing!');
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
