@@ -70,11 +70,11 @@ if (readyCheck === true) {
   for (var i = 0; i < 5 ; i++) {
     quizBoolean[i].userResponse = prompt(quizBoolean[i].question);
     console.log(quizBoolean[i].userResponse);
-    document.write('<p>' + quizBoolean[i].question + '<br />');
+    // document.write('<p>' + quizBoolean[i].question + '<br />');
     // Check if answer was defined
     if (quizBoolean[i].userResponse) {
       console.log('Question ' + (i + 1) + ' was answered.' );
-      document.write('You answered: ' + quizBoolean[i].userResponse + '<br />');
+      // document.write('You answered: ' + quizBoolean[i].userResponse + '<br />');
       quizBoolean[i].nullCheck = true;
       // Then check if correct
       console.log('First character of guess is "' + quizBoolean[i].userResponse[0] + '"...');
@@ -82,16 +82,16 @@ if (readyCheck === true) {
         console.log('And is correct.');
         userScore ++;
         alert('That\'s right!\n\n' + quizBoolean[i].feedback);
-        document.write('That\'s right!<br />' + quizBoolean[i].feedback + '</p>');
+        // document.write('That\'s right!<br />' + quizBoolean[i].feedback + '</p>');
       } else {
         console.log('But is incorrect.');
         alert('I\'m afraid that\'s wrong.\n\n' + quizBoolean[i].feedback);
-        document.write('But unfortunately, that\'s wrong.<br />' + quizBoolean[i].feedback + '</p>');
+        // document.write('But unfortunately, that\'s wrong.<br />' + quizBoolean[i].feedback + '</p>');
       }
     } else {
       console.log('Question ' + (i + 1) + ' was not answered.');
       alert('You didn\'t bother to answer this one!\n\n' + quizBoolean[i].feedback);
-      document.write('You didn\'t bother to answer this one!<br />' + quizBoolean[i].feedback + '</p>');
+      // document.write('You didn\'t bother to answer this one!<br />' + quizBoolean[i].feedback + '</p>');
     }
   }
 // Random number guessing game
