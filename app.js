@@ -6,12 +6,61 @@
 
 // Check if user is ready.
 var readyCheck = confirm('You\'re about to to make some guesses about Robert. Are you ready?');
-
 // Log user response for readiness. No quiz if user clicks 'Cancel'.
 if (readyCheck === true) {
   console.log('User has confirmed readiness.');
+  var userName = greetUser();
   // Track number of questions answered correctly within allowed attempts.
   var userScore = 0;
+  quizYN();
+  quizNumberGuess();
+
+  // Question 7
+  // 2-Dimensional array contains cities and states I have lived in
+  var citiesLived = [['Tacoma', ', WA, '], ['Auburn', ', WA, '], ['Seattle', ', WA, '], ['Buckley', ', WA, and '], ['Beaverton', ', OR']];
+  var cityGuesses = [];
+  //Create a string containing all citiesLived
+  var cityList = '';
+  for (var i = 0; i < citiesLived.length; i++) {
+    cityList += citiesLived[i][0] + citiesLived[i][1];
+  }
+  // Give user 6 chances to guess
+  for (i = 0; i < 6; i++) {
+    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\nYou have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
+    console.log(cityGuesses[i].toUpperCase());
+    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
+      console.log('User guessed ' + cityGuesses[i] + ' correctly.');
+      alert('That\'s right!');
+      userScore ++;
+      break;
+    } else {
+      console.log('Wrong guess');
+      alert('That is incorrect.');
+    }
+  }
+  alert('I have lived in: ' + cityList + '.');
+  alert('That\'s all the questions I have, ' + userName + '.\nYou scored a total of ' + userScore + ' out of a possible 7.\n\nBut since one of those was a trick question, I\'ll give you that point back.\nYour revised score is ' + (userScore + 1) + ' out of 7.\n\nThanks for playing!');
+} else {
+  // No quiz for you!
+  console.log('User is NOT prepared.');
+  document.write('<p>You know what? Just come back when you\'re ready to take a shot at the quiz, okay?</p>');
+}
+
+function greetUser() {
+  // ask vistor for their name
+  var userName = (prompt('What is your name, please?'));
+  if (userName) {
+    alert('Great! Thanks, ' + userName + '.');
+    console.log('User provided name of "' + userName + '".');
+  } else {
+    alert('Okay, you can remain anonymous if you like.');
+    userName = 'Anonymous';
+    console.log('No name provided, set to "' + userName + '".');
+  }
+  return userName;
+}
+
+function quizYN() {
   // create objects to contain question and response data
   var q1 = {
     question: 'Question 1: Do you think I got more than six hours of sleep in the past two days while building this quiz? \(Y\/N\)',
@@ -55,18 +104,8 @@ if (readyCheck === true) {
   };
   // store all Y/N questions in an array
   var quizBoolean = [q1, q2, q3, q4, q5];
-  // ask vistor for their name
-  var visitorName = (prompt('What is your name, please?'));
-  if (visitorName) {
-    var greeting = 'Great! Thanks, ' + visitorName + '.\n';
-    console.log('User provided name of "' + visitorName + '".');
-  } else {
-    var greeting = 'Okay, you can remain anonymous if you like.\n';
-    visitorName = 'Anonymous';
-    console.log('No name provided, set to "' + visitorName + '".');
-  }
-// Ask 5 Yes/No questions and check responses
-  alert(greeting + 'The following five questions should be answered (Y)es or (N)o.');
+  // Ask 5 Yes/No questions and check responses
+  alert('The following five questions should be answered (Y)es or (N)o.');
   for (var i = 0; i < 5 ; i++) {
     quizBoolean[i].userResponse = prompt(quizBoolean[i].question);
     console.log(quizBoolean[i].userResponse);
@@ -94,12 +133,15 @@ if (readyCheck === true) {
       // document.write('You didn\'t bother to answer this one!<br />' + quizBoolean[i].feedback + '</p>');
     }
   }
-// Random number guessing game
-  alert('Okay, ' + visitorName + '. Now I\'d like you to guess a number between 1 and 10.\n\nYou\'ll get FOUR chances to guess.');
+}
+
+function quizNumberGuess() {
+  // Random number guessing game
+  alert('Okay, ' + userName + '. Now I\'d like you to guess a number between 1 and 10.\n\nYou\'ll get FOUR chances to guess.');
   var targetNumber = Math.floor(Math.random() * 10) + 1;
   console.log('Computer picked: ' + targetNumber);
   var targetGuesses = [];
-// Check user guesses against number chosen up to 4 times
+  // Check user guesses against number chosen up to 4 times
   for (i = 0; i < 4; i++) {
     // ask user for a number
     targetGuesses[i] = parseInt(prompt('Guess ' + (i + 1) + ' of 4:\nWhat number did I pick? (Between 1 and 10.)'));
@@ -112,7 +154,7 @@ if (readyCheck === true) {
         if (i == 0) {
           alert('Wow, first guess! I\'m impressed.');
         } else if (i == 1) {
-          alert('Nicely done, ' + visitorName + '! ' + targetGuesses[i] + ' is correct.');
+          alert('Nicely done, ' + userName + '! ' + targetGuesses[i] + ' is correct.');
         } else {
           alert('You got it! ' + targetGuesses[i] + ' is correct.');
         }
@@ -146,34 +188,4 @@ if (readyCheck === true) {
       }
     }
   }
-
-  // Question 7
-  // 2-Dimensional array contains cities and states I have lived in
-  var citiesLived = [['Tacoma', ', WA, '], ['Auburn', ', WA, '], ['Seattle', ', WA, '], ['Buckley', ', WA, and '], ['Beaverton', ', OR']];
-  var cityGuesses = [];
-  //Create a string containing all citiesLived
-  var cityList = '';
-  for (var i = 0; i < citiesLived.length; i++) {
-    cityList += citiesLived[i][0] + citiesLived[i][1];
-  }
-  // Give user 6 chances to guess
-  for (i = 0; i < 6; i++) {
-    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\nYou have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
-    console.log(cityGuesses[i].toUpperCase());
-    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
-      console.log('User guessed ' + cityGuesses[i] + ' correctly.');
-      alert('That\'s right!');
-      userScore ++;
-      break;
-    } else {
-      console.log('Wrong guess');
-      alert('That is incorrect.');
-    }
-  }
-  alert('I have lived in: ' + cityList + '.');
-  alert('That\'s all the questions I have, ' + visitorName + '.\nYou scored a total of ' + userScore + ' out of a possible 7.\n\nBut since one of those was a trick question, I\'ll give you that point back.\nYour revised score is ' + (userScore + 1) + ' out of 7.\n\nThanks for playing!');
-} else {
-  // No quiz for you!
-  console.log('User is NOT prepared.');
-  document.write('<p>You know what? Just come back when you\'re ready to take a shot at the quiz, okay?</p>');
 }
