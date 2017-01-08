@@ -171,18 +171,13 @@ function quizNumberGuess() {
 
 function quizCityGuess() {
   // 2-Dimensional array contains cities and states I have lived in
-  var citiesLived = [['Tacoma', ', WA, '], ['Auburn', ', WA, '], ['Seattle', ', WA, '], ['Buckley', ', WA, and '], ['Beaverton', ', OR']];
+  var citiesLived = ['Tacoma', 'Auburn', 'Seattle', 'Buckley', 'Beaverton'];
   var cityGuesses = [];
-  //Create a string containing all citiesLived
-  var cityList = '';
-  for (var i = 0; i < citiesLived.length; i++) {
-    cityList += citiesLived[i][0] + citiesLived[i][1];
-  }
   // Give user 6 chances to guess
   for (var i = 0; i < 6; i++) {
     cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\nYou have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
-    console.log(cityGuesses[i].toUpperCase());
-    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
+    console.log(cityGuesses[i]);
+    if (citiesLived.includes(capitalize(cityGuesses[i]))) {
       console.log('User guessed ' + cityGuesses[i] + ' correctly.');
       alert('That\'s right!');
       userScore ++;
@@ -192,5 +187,18 @@ function quizCityGuess() {
       alert('That is incorrect.');
     }
   }
-  alert('I have lived in: ' + cityList + '.');
+  alert('In Washington, I have lived in Tacoma, Auburn, Seattle and Buckley.\nI\'ve also lived in Beaverton, Oregon.');
+}
+
+function capitalize(input) {
+  // based on a solution I found on Stack overflow:
+  // http://stackoverflow.com/a/1026087
+  if (input) {
+    console.log(input);
+    input = input.toLowerCase();
+    console.log('To lower case: ' + input);
+    console.log(input.charAt(0).toUpperCase() + input.slice(1));
+    return input.charAt(0).toUpperCase() + input.slice(1);
+  }
+  else return '';
 }
