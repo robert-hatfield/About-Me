@@ -12,33 +12,12 @@ if (readyCheck === true) {
   var userName = greetUser();
   // Track number of questions answered correctly within allowed attempts.
   var userScore = 0;
+  // Questions 1-5
   quizYN();
+  // Question 6
   quizNumberGuess();
-
   // Question 7
-  // 2-Dimensional array contains cities and states I have lived in
-  var citiesLived = [['Tacoma', ', WA, '], ['Auburn', ', WA, '], ['Seattle', ', WA, '], ['Buckley', ', WA, and '], ['Beaverton', ', OR']];
-  var cityGuesses = [];
-  //Create a string containing all citiesLived
-  var cityList = '';
-  for (var i = 0; i < citiesLived.length; i++) {
-    cityList += citiesLived[i][0] + citiesLived[i][1];
-  }
-  // Give user 6 chances to guess
-  for (i = 0; i < 6; i++) {
-    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\nYou have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
-    console.log(cityGuesses[i].toUpperCase());
-    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
-      console.log('User guessed ' + cityGuesses[i] + ' correctly.');
-      alert('That\'s right!');
-      userScore ++;
-      break;
-    } else {
-      console.log('Wrong guess');
-      alert('That is incorrect.');
-    }
-  }
-  alert('I have lived in: ' + cityList + '.');
+  quizCityGuess();
   alert('That\'s all the questions I have, ' + userName + '.\nYou scored a total of ' + userScore + ' out of a possible 7.\n\nBut since one of those was a trick question, I\'ll give you that point back.\nYour revised score is ' + (userScore + 1) + ' out of 7.\n\nThanks for playing!');
 } else {
   // No quiz for you!
@@ -142,7 +121,7 @@ function quizNumberGuess() {
   console.log('Computer picked: ' + targetNumber);
   var targetGuesses = [];
   // Check user guesses against number chosen up to 4 times
-  for (i = 0; i < 4; i++) {
+  for (var i = 0; i < 4; i++) {
     // ask user for a number
     targetGuesses[i] = parseInt(prompt('Guess ' + (i + 1) + ' of 4:\nWhat number did I pick? (Between 1 and 10.)'));
     console.log(targetGuesses[i]);
@@ -188,4 +167,30 @@ function quizNumberGuess() {
       }
     }
   }
+}
+
+function quizCityGuess() {
+  // 2-Dimensional array contains cities and states I have lived in
+  var citiesLived = [['Tacoma', ', WA, '], ['Auburn', ', WA, '], ['Seattle', ', WA, '], ['Buckley', ', WA, and '], ['Beaverton', ', OR']];
+  var cityGuesses = [];
+  //Create a string containing all citiesLived
+  var cityList = '';
+  for (var i = 0; i < citiesLived.length; i++) {
+    cityList += citiesLived[i][0] + citiesLived[i][1];
+  }
+  // Give user 6 chances to guess
+  for (var i = 0; i < 6; i++) {
+    cityGuesses[i] = prompt('Try to guess a Pacific NW city I\'ved lived in.\nYou have ' + (6 - i) + ' out of 6 tries remaining.\nHint: one of them may not be in the state of Washington.');
+    console.log(cityGuesses[i].toUpperCase());
+    if (cityGuesses[i].toUpperCase() === citiesLived[0][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[1][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[2][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[3][0].toUpperCase() || cityGuesses[i].toUpperCase() === citiesLived[4][0].toUpperCase()) {
+      console.log('User guessed ' + cityGuesses[i] + ' correctly.');
+      alert('That\'s right!');
+      userScore ++;
+      break;
+    } else {
+      console.log('Wrong guess');
+      alert('That is incorrect.');
+    }
+  }
+  alert('I have lived in: ' + cityList + '.');
 }
