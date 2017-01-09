@@ -10,9 +10,17 @@ h1, h3 {
 }
 
 h3 {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 3px;
   border-style: ridge;
   border-width: 3px;
   border-color: lightgrey;
+}
+
+p {
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 ul.list1{
@@ -39,8 +47,9 @@ ol.list1{
   /* my thanks to users Benjamin and arielnmz at StackOverflow! - http://stackoverflow.com/a/25267892 & http://stackoverflow.com/a/25267928 */
 
 #ed_summary {
-  margin-left: 246px;
+  margin-left: 275px;
   margin-right: 5%;
+  padding-right: 10px;
 }
 
 #ed_summary ul li {
@@ -65,17 +74,23 @@ ol.list1{
   vertical-align: sub;
 }
 
-#quiz {
+#to_the_quiz {
   margin-top: 44px;
   margin-left: 5%;
   margin-right: 5%;
+  background-color: #blue;
 }
 
-#quiz h3{
+a {
+  background-color:lightgrey;
+  color: #4A525A;
+}
+
+.links h3{
   background-color: lightgrey;
   color: #4A525A;
-  width: 250px;
-  margin: 0 auto;
+  width: 450px;
+  margin: 20px auto;
   padding: 5px 0px;
   border-width: thick;
   border-style: outset;
