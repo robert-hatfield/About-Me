@@ -91,6 +91,13 @@ ol.list1{
   background-color: #blue;
 }
 
+#score {
+  text-align: center;
+  font-weight: bolder;
+  color: cornflowerblue;
+  font-size: larger;
+}
+
 a {
   background-color:lightgrey;
   color: #4A525A;

@@ -15,11 +15,11 @@ if (readyCheck === true) {
   // Question 7
   quizCityGuess();
   alert('That\'s all the questions I have, ' + userName + '.\nYou scored a total of ' + userScore + ' out of a possible 7.\n\nBut since one of those was a trick question, I\'ll give you that point back.\nYour revised score is ' + (userScore + 1) + ' out of 7.\n\nThanks for playing!');
-  document.write('<p>' + userName + ', you scored a total of ' + (userScore + 1) + ' out of 7 on the quiz.</p>');
+  document.write('<p id="score">' + userName + ', you scored a total of ' + (userScore + 1) + ' out of 7 on the quiz.</p>');
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
-  document.write('<p>You know what? Just come back when you\'re ready to take a shot at the quiz, okay?</p>');
+  document.write('<p id="score">You know what? Just come back when you\'re ready to take a shot at the quiz, okay?</p>');
 }
 
 function greetUser() {
@@ -171,7 +171,7 @@ function quizNumberGuess() {
       }
     }
   }
-  document.write('<p>Question 6 was a number guessing game. I chose ' + targetNumber + guessedNumber + '</p>');
+  document.write('<p>Question 6 was a number guessing game. I chose ' + targetNumber + guessedNumber + '</p><hr />');
 }
 
 function quizCityGuess() {
@@ -205,7 +205,7 @@ function quizCityGuess() {
   for (var i = 0; i < citiesLived.length; i++) {
     document.write('<li>' + citiesLived[i] + statesLived[i] + '</li>');
   }
-  document.write('</ul>');
+  document.write('</ul><hr />');
 }
 
 function capitalize(input) {
