@@ -129,7 +129,7 @@ function quizNumberGuess() {
     // confirm that user provided a response
     if (targetGuesses[i]) {
       /* check if user provided a valid number and is correct
-      if it is correct, give user varied feedback and end number game*/
+      if it is correct, give user varied feedback and end number game */
       if (targetGuesses[i] === targetNumber) {
         if (i == 0) {
           alert('Wow, first guess! I\'m impressed.');

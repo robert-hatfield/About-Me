@@ -9,7 +9,7 @@ h1, h3 {
   font-family: Verdana, sans-serif;
 }
 
-h3:not(h3.quiz) {
+h3 {
   border-style: ridge;
   border-width: 3px;
   border-color: lightgrey;
@@ -34,6 +34,7 @@ ol.list1{
   border-radius: 12.5%;
   background-size: 200px;
   margin: 20px;
+  float:left;
   }
   /* my thanks to users Benjamin and arielnmz at StackOverflow! - http://stackoverflow.com/a/25267892 & http://stackoverflow.com/a/25267928 */
 
