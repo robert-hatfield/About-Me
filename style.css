@@ -23,6 +23,16 @@ p {
   margin-right: 5%;
 }
 
+hr {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+ul.quiz{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 ul.list1{
     margin-left: 30px;
     margin-right: 30px;

@@ -1,9 +1,5 @@
 'use strict';
 
-/* TO DO:
-  Insert a link into index.html if user is ready for the quiz
-*/
-
 // Check if user is ready.
 var readyCheck = confirm('You\'re about to to make some guesses about Robert. Are you ready?');
 // Log user response for readiness. No quiz if user clicks 'Cancel'.
@@ -19,7 +15,7 @@ if (readyCheck === true) {
   // Question 7
   quizCityGuess();
   alert('That\'s all the questions I have, ' + userName + '.\nYou scored a total of ' + userScore + ' out of a possible 7.\n\nBut since one of those was a trick question, I\'ll give you that point back.\nYour revised score is ' + (userScore + 1) + ' out of 7.\n\nThanks for playing!');
-  document.write('<p>' + userName + ' scored a total of ' + (userScore + 1) + ' out of 7 on the quiz.</p>');
+  document.write('<p>' + userName + ', you scored a total of ' + (userScore + 1) + ' out of 7 on the quiz.</p>');
 } else {
   // No quiz for you!
   console.log('User is NOT prepared.');
@@ -85,34 +81,35 @@ function quizYN() {
   // store all Y/N questions in an array
   var quizBoolean = [q1, q2, q3, q4, q5];
   // Ask 5 Yes/No questions and check responses
-  alert('The following five questions should be answered (Y)es or (N)o.');
+  alert('The following five questions should be answered\n(Y)es or (N)o.');
   for (var i = 0; i < 5 ; i++) {
     quizBoolean[i].userResponse = prompt(quizBoolean[i].question);
     console.log(quizBoolean[i].userResponse);
-    // document.write('<p>' + quizBoolean[i].question + '<br />');
+    document.write('<p>' + quizBoolean[i].question + '<br />');
     // Check if answer was defined
     if (quizBoolean[i].userResponse) {
       console.log('Question ' + (i + 1) + ' was answered.' );
-      // document.write('You answered: ' + quizBoolean[i].userResponse + '<br />');
+      document.write('You answered: ' + quizBoolean[i].userResponse + '<br />');
       quizBoolean[i].nullCheck = true;
       // Then check if correct
       console.log('First character of guess is "' + quizBoolean[i].userResponse[0] + '"...');
       if (quizBoolean[i].userResponse[0].toUpperCase() == quizBoolean[i].correctAnswer) {
         console.log('And is correct.');
         userScore ++;
-        alert('That\'s right!\n\n' + quizBoolean[i].feedback);
-        // document.write('That\'s right!<br />' + quizBoolean[i].feedback + '</p>');
+        alert('That\'s right!');
+        document.write('You guessed correctly.<br />' + quizBoolean[i].feedback + '</p>');
       } else {
         console.log('But is incorrect.');
-        alert('I\'m afraid that\'s wrong.\n\n' + quizBoolean[i].feedback);
-        // document.write('But unfortunately, that\'s wrong.<br />' + quizBoolean[i].feedback + '</p>');
+        alert('I\'m afraid that\'s wrong.');
+        document.write('But were incorrect.<br />' + quizBoolean[i].feedback + '</p>');
       }
     } else {
       console.log('Question ' + (i + 1) + ' was not answered.');
-      alert('You didn\'t bother to answer this one!\n\n' + quizBoolean[i].feedback);
-      // document.write('You didn\'t bother to answer this one!<br />' + quizBoolean[i].feedback + '</p>');
+      alert('What, no guess at all?');
+      document.write('You didn\'t bother to answer this one!<br />' + quizBoolean[i].feedback + '</p>');
     }
   }
+  document.write('<hr />');
 }
 
 function quizNumberGuess() {
@@ -133,12 +130,16 @@ function quizNumberGuess() {
       if (targetGuesses[i] === targetNumber) {
         if (i == 0) {
           alert('Wow, first guess! I\'m impressed.');
+          var guessCount = (i + 1) + ' try.';
         } else if (i == 1) {
           alert('Nicely done, ' + userName + '! ' + targetGuesses[i] + ' is correct.');
+          var guessCount = (i + 1) + ' tries.';
         } else {
           alert('You got it! ' + targetGuesses[i] + ' is correct.');
+          var guessCount = (i + 1) + ' tries.';
         }
         userScore ++;
+        var guessedNumber = '.<br />You guessed it correctly in ' + guessCount;
         break;
       } else {
         // if guess was incorrect or not a number
@@ -149,6 +150,7 @@ function quizNumberGuess() {
           var retryYN = ' Try again.';
         } else {
           var retryYN = ' Unfortunately, that was your last try.\n\nThe number I chose was ' + targetNumber + '.';
+          var guessedNumber = '.<br />I\'m afraid you didn\'t guess it in time.';
         }
         if (targetGuesses[i] > targetNumber) {
           alert(targetGuesses[i] + ' is too high.' + retryYN);
@@ -165,14 +167,17 @@ function quizNumberGuess() {
       } else {
         // no guess
         alert('Well, that was your last chance and didn\'t even try. Ah well.\nThe number I chose was ' + targetNumber + '.');
+        var guessedNumber = '.<br />I\'m afraid you didn\'t guess it in time.';
       }
     }
   }
+  document.write('<p>Question 6 was a number guessing game. I chose ' + targetNumber + guessedNumber + '</p>');
 }
 
 function quizCityGuess() {
   // 2-Dimensional array contains cities and states I have lived in
   var citiesLived = ['Tacoma', 'Auburn', 'Seattle', 'Buckley', 'Beaverton'];
+  var statesLived = [', WA', ', WA', ', WA', ', WA', ', OR'];
   var cityGuesses = [];
   // Give user 6 chances to guess
   for (var i = 0; i < 6; i++) {
@@ -182,13 +187,25 @@ function quizCityGuess() {
       console.log('User guessed ' + cityGuesses[i] + ' correctly.');
       alert('That\'s right!');
       userScore ++;
+      if (i === 0) {
+        var guessedCity = 'You guessed it correctly in 1 try.';
+      } else {
+        var guessedCity = 'You guessed it correctly in ' + (i + 1) + ' tries.';
+      }
       break;
     } else {
       console.log('Wrong guess');
       alert('That is incorrect.');
+      var guessedCity = 'You did not guess this one correctly.';
     }
   }
-  alert('In Washington, I have lived in Tacoma, Auburn, Seattle and Buckley.\nI\'ve also lived in Beaverton, Oregon.');
+  // alert('In Washington, I have lived in Tacoma, Auburn, Seattle and Buckley.\nI\'ve also lived in Beaverton, Oregon.');
+  document.write('<p>Question 7 was to guess a city where I have lived.<br />' + guessedCity + '<br />I have lived in:</p>');
+  document.write('<ul class="quiz">');
+  for (var i = 0; i < citiesLived.length; i++) {
+    document.write('<li>' + citiesLived[i] + statesLived[i] + '</li>');
+  }
+  document.write('</ul>');
 }
 
 function capitalize(input) {
